@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>hms.test.mvn.release</groupId>
+    <artifactId>spring-profile-plugin</artifactId>
+    <version>1.0.5-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+
+    <name>spring-profile-plugin</name>
+
+    <url>https://gitlablive.hsenidmobile.com/hsenid-component/spring-profile-plugin</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git@https://github.com/Jay-Krish/git-release-deploy-test.git</connection>
+        <url>scm:git:git@https://github.com/Jay-Krish/git-release-deploy-test.git</url>
+        <developerConnection>scm:git:https://github.com/Jay-Krish/git-release-deploy-test.git</developerConnection>
+        <tag>v1-0-b4</tag>
+    </scm>
+
+<!--    <repositories>
+        <repository>
+            <id>archiva.internal</id>
+            <releases />
+            <url>http://192.168.0.7:8080/archiva/repository/internal</url>
+        </repository>
+        <repository>
+            <id>archiva.snapshots</id>
+            <snapshots />
+            <url>http://192.168.0.7:8080/archiva/repository/snapshots</url>
+        </repository>
+    </repositories>-->
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <goalPrefix>spring-profile</goalPrefix>
+                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>mojo-descriptor</id>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>help-goal</id>
+                        <goals>
+                            <goal>helpmojo</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-invoker-plugin</artifactId>
+                <version>1.7</version>
+                <configuration>
+                    <debug>true</debug>
+                    <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+                    <pomIncludes>
+                        <pomInclude>*/pom.xml</pomInclude>
+                    </pomIncludes>
+                    <postBuildHookScript>verify</postBuildHookScript>
+                    <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+                    <settingsFile>src/it/settings.xml</settingsFile>
+                    <goals>
+                        <goal>clean</goal>
+                        <goal>test-compile</goal>
+                    </goals>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>install</goal>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>archiva.internal</id>
+            <url>http://192.168.0.7:8080/archiva/repository/internal</url>
+        </repository>
+        <snapshotRepository>
+            <id>archiva.snapshots</id>
+            <url>http://192.168.0.7:8080/archiva/repository/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
