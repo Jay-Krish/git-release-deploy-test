@@ -2,9 +2,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hms.test.mvn.release</groupId>
-    <artifactId>spring-profile-plugin</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
-    <packaging>maven-plugin</packaging>
+    <artifactId>test-release</artifactId>
+    <version>1.0.5</version>
+    <packaging>jar</packaging>
 
     <name>spring-profile-plugin</name>
 
@@ -18,7 +18,7 @@
         <connection>scm:git:git@https://github.com/Jay-Krish/git-release-deploy-test.git</connection>
         <url>scm:git:git@https://github.com/Jay-Krish/git-release-deploy-test.git</url>
         <developerConnection>scm:git:https://github.com/Jay-Krish/git-release-deploy-test.git</developerConnection>
-        <tag>v1-0-b4</tag>
+        <tag>v1-0-b5</tag>
     </scm>
 
 <!--    <repositories>
