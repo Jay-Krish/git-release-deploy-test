@@ -3,7 +3,7 @@
 
     <groupId>hms.test.mvn.release</groupId>
     <artifactId>test-release</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>spring-profile-plugin</name>
